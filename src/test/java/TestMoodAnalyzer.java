@@ -1,17 +1,11 @@
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import com.example.MoodAnalyzer;
 
 public class TestMoodAnalyzer {
     public MoodAnalyzer moodAnalyzer;
-
-    // @BeforeEach
-    // public void setUp() {
-    // moodAnalyzer = new MoodAnalyzer();
-    // }
 
     @Test
     public void testAnalazyMoodSad() {
@@ -29,4 +23,11 @@ public class TestMoodAnalyzer {
         assertEquals("HAPPY", result);
     }
 
+    @Test
+    public void testAnalyzeNullMood() {
+        moodAnalyzer = new MoodAnalyzer(null);
+        String result = moodAnalyzer.analyzeMood();
+
+        assertEquals("HAPPY", result);
+    }
 }

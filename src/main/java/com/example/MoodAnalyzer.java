@@ -29,6 +29,16 @@ public class MoodAnalyzer {
     }
 
     public String analyzeMood() {
-        return analyzeMood(this.message);
+        try {
+            return analyzeMood(this.message);
+        } catch (NullPointerException e) {
+            System.out.println("error");
+            return "HAPPY";
+        }
+    }
+
+    public static void main(String[] args) {
+        MoodAnalyzer moodAnalyzer = new MoodAnalyzer(null);
+        System.out.println(moodAnalyzer.analyzeMood());
     }
 }
