@@ -28,17 +28,15 @@ public class MoodAnalyzer {
         return result;
     }
 
-    public String analyzeMood() {
-        try {
-            return analyzeMood(this.message);
-        } catch (NullPointerException e) {
-            System.out.println("error");
-            return "HAPPY";
+    public String analyzeMood() throws MoodAnalyzerException {
+        if (this.message == null) {
+            throw new MoodAnalyzerException(MoodAnalyzerExceptionEnum.NullStringException, "String is null");
         }
-    }
 
-    public static void main(String[] args) {
-        MoodAnalyzer moodAnalyzer = new MoodAnalyzer(null);
-        System.out.println(moodAnalyzer.analyzeMood());
+        if (this.message.isEmpty()) {
+            throw new MoodAnalyzerException(MoodAnalyzerExceptionEnum.EmptyStringException, "String is empty");
+        }
+
+        return analyzeMood(this.message);
     }
 }
